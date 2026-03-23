@@ -1,0 +1,99 @@
+<div class="form-container">
+  <div class="header-section">
+    <h2>🎓 פרטי השכלה</h2>
+    <p>ספרי לנו על המסלול האקדמי שלך</p>
+  </div>
+
+  <form [formGroup]="eduForm">
+    <div formArrayName="educations">
+      <div *ngFor="let eduGroup of educationsArray.controls; let i = index" [formGroupName]="i" class="education-card">
+        <div class="card-header">
+          <h3>השכלה #{{i + 1}}</h3>
+          <button type="button" class="btn-delete-icon" (click)="removeEducation(i)" *ngIf="educationsArray.length > 1" title="מחק השכלה">🗑</button>
+        </div>
+
+        <div class="grid-layout">
+          <div class="form-group">
+            <label>מוסד לימודים:</label>
+            <input type="text" formControlName="school" placeholder="למשל: אוניברסיטת תל אביב">
+          </div>
+
+          <div class="form-group">
+            <label>סוג תואר:</label>
+            <select formControlName="degree">
+              <option value="" disabled selected>בחר תואר</option>
+              <option value="diploma">תעודה</option>
+              <option value="first">תואר ראשון</option>
+              <option value="second">תואר שני</option>
+              <option value="doctor">דוקטורט</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>תחום לימוד:</label>
+            <input type="text" formControlName="field" placeholder="למשל: מדעי המחשב">
+          </div>
+
+          <div class="form-group">
+            <label>סטטוס:</label>
+            <select formControlName="status">
+              <option value="finished">סיימתי</option>
+              <option value="studying">לומדת כרגע</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>תאריך התחלה:</label>
+            <input type="date" formControlName="startDate">
+          </div>
+
+          <div class="form-group" *ngIf="eduGroup.get('status')?.value === 'finished'">
+            <label>תאריך סיום:</label>
+            <input type="date" formControlName="endDate">
+            <small class="error-text" *ngIf="eduGroup.errors?.['dateError']">תאריך סיום חייב להיות אחרי תאריך התחלה</small>
+          </div>
+
+          <div class="form-group">
+            <label>ממוצע ציונים:</label>
+            <input type="number" formControlName="grade" class="no-spin" placeholder="0-100">
+            <small class="error-text" *ngIf="eduGroup.get('grade')?.errors?.['max']">הציון המקסימלי הוא 100</small>
+          </div>
+
+          <div class="form-group checkbox-wrapper">
+            <label class="custom-checkbox">
+              <input type="checkbox" formControlName="isHonors">
+              <span class="checkmark"></span>
+              הצטיינות
+            </label>
+          </div>
+
+          <div class="form-group full-width">
+            <label>תיאור קצר:</label>
+            <textarea formControlName="description" rows="2" placeholder="ספרי בקצרה על הלימודים, פרויקט גמר וכדומה..."></textarea>
+          </div>
+        </div>
+
+        <div class="courses-section" formArrayName="courses">
+          <label>קורסים מרכזיים:</label>
+          <div *ngFor="let course of getCoursesArray(i).controls; let j = index" class="course-row">
+            <input type="text" [formControlName]="j" placeholder="שם הקורס">
+            <button type="button" class="btn-remove-course" (click)="removeCourse(i, j)" *ngIf="getCoursesArray(i).length > 1">✕</button>
+          </div>
+          <button type="button" class="btn-add-item" (click)="addCourse(i)">+ הוסף קורס</button>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn-main-add" (click)="addEducation()">הוסף השכלה</button>
+
+    <div *ngIf="eduForm.invalid && eduForm.touched" class="error-banner">
+      <strong>שימי לב:</strong> הטופס עדיין לא תקין. ודאי שמילאת את כל שדות החובה (מוסד, תואר, תחום ותאריכים).
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="btn-next" (click)="goToPreview()">
+        צפה בקורות החיים המוכנים ⬅
+      </button>
+    </div>
+  </form>
+</div>

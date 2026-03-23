@@ -1,0 +1,46 @@
+<div class="resume-paper">
+  <header class="resume-header" *ngIf="personalData">
+    <h1>{{ personalData.firstName }} {{ personalData.lastName }}</h1>
+    <div class="contact-info">
+      <span>📧 {{ personalData.email }}</span>
+      <span>📱 {{ personalData.phone }}</span>
+      <span *ngIf="personalData.city">📍 {{ personalData.city }}</span>
+    </div>
+    <p class="summary-text" *ngIf="personalData.summary">{{ personalData.summary }}</p>
+  </header>
+
+  <hr class="separator">
+
+  <section class="resume-section" *ngIf="educationList.length > 0">
+    <h2 class="section-title">🎓 השכלה</h2>
+    
+    <div *ngFor="let edu of educationList" class="education-item">
+      <div class="edu-header">
+        <span class="edu-dates">
+          {{ edu.startDate | date:'MM/yyyy' }} - 
+          {{ edu.status === 'studying' ? 'לומד כרגע' : (edu.endDate | date:'MM/yyyy') }}
+        </span>
+        <strong class="edu-school">{{ edu.school }}</strong>
+      </div>
+
+      <div class="edu-content">
+        <div class="edu-degree-line">
+          <span class="edu-degree">{{ edu.degree }} ב{{ edu.field }}</span>
+          <span class="edu-grade" *ngIf="edu.grade"> | ממוצע: {{ edu.grade }}</span>
+          <span class="honors-badge" *ngIf="edu.isHonors">מצטיין</span>
+        </div>
+        
+        <p class="edu-description" *ngIf="edu.description">
+          {{ edu.description }}
+        </p>
+        
+        <div class="courses-list" *ngIf="edu.courses?.length > 0 && edu.courses[0] !== ''">
+          <strong>קורסים רלוונטיים:</strong>
+          <ul>
+            <li *ngFor="let course of edu.courses">{{ course }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

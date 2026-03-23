@@ -1,0 +1,70 @@
+<div class="form-container">
+  <h2>פרטים אישיים</h2>
+  
+  <form #personalForm="ngForm">
+    
+    <div class="form-group">
+      <label>שם מלא:</label>
+      <input type="text" 
+             name="fullName" 
+             [(ngModel)]="personalInfo.fullName" 
+             (input)="onInputChange()" 
+             required 
+             #nameRef="ngModel">
+      <small class="error-msg" *ngIf="nameRef.invalid && nameRef.touched">
+        חובה להזין שם מלא
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>אימייל:</label>
+      <input type="email" 
+             name="email" 
+             [(ngModel)]="personalInfo.email" 
+             (input)="onInputChange()" 
+             required 
+             email 
+             #emailRef="ngModel">
+      <small class="error-msg" *ngIf="emailRef.invalid && emailRef.touched">
+        נא להזין אימייל תקין
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>טלפון:</label>
+      <input type="text" 
+             name="phone" 
+             [(ngModel)]="personalInfo.phone" 
+             (input)="onInputChange()" 
+             required 
+             pattern="^[0-9]*$" 
+             #phoneRef="ngModel">
+      <small class="error-msg" *ngIf="phoneRef.invalid && phoneRef.touched">
+        נא להזין מספרים בלבד
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>תיאור קצר:</label>
+      <textarea name="summary" 
+                [(ngModel)]="personalInfo.summary" 
+                (input)="onInputChange()" 
+                required 
+                #summaryRef="ngModel"></textarea>
+      <small class="error-msg" *ngIf="summaryRef.invalid && summaryRef.touched">
+        נא להוסיף תיאור קצר על עצמך
+      </small>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="personalForm.reset()" class="btn-secondary">נקה הכל</button>
+      <button type="button" 
+              (click)="goToEducation()" 
+              class="btn-next" 
+              [disabled]="personalForm.invalid">
+        המשך לפירוט השכלה ⬅
+      </button>
+    </div>
+
+  </form>
+</div>

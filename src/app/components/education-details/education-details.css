@@ -1,0 +1,148 @@
+.form-container {
+  direction: rtl;
+  max-width: 850px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 20px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header-section h2 {
+  color: #1a73e8;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.education-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f8f9fa;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #edeff2;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s;
+  background: #fdfdfd;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #1a73e8;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.1);
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.courses-section {
+  margin-top: 30px;
+  background: #f8fbff;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.course-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-add-item {
+  background: none;
+  border: 2px dashed #1a73e8;
+  color: #1a73e8;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-main-add {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+}
+
+.btn-next {
+  background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;
+  width: 100%;
+  box-shadow: 0 5px 20px rgba(0, 176, 155, 0.3);
+}
+
+.error-banner {
+  background: #fff5f5;
+  color: #c53030;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border-right: 5px solid #c53030;
+}
