@@ -1,3 +1,7 @@
+// מימוש: Template Driven Form.
+// נימוק: בחרתי בשיטה זו עבור הפרטים האישיים כיוון שמדובר בטופס פשוט וסטטי. 
+// ה-Data Binding הדו-כיווני (ngModel) מאפשר קוד נקי ומינימלי במחלקה.
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 

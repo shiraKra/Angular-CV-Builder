@@ -1,3 +1,7 @@
+// מימוש: Reactive Form (Model Driven).
+// נימוק: בחרתי בשיטה זו עבור טופס ההשכלה בגלל המורכבות והצורך בניהול מערכים דינמיים (FormArray).
+// שיטה זו מאפשרת שליטה מלאה בוולידציות מורכבות וניהול דינמי של הוספה/מחיקה של פריטים.
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, FormArray, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
@@ -38,7 +42,7 @@ export class EducationDetailsComponent implements OnInit {
     const group = new FormGroup({
       school: new FormControl('', [Validators.required]),
       degree: new FormControl('', [Validators.required]),
-      field: new FormControl('', [Validators.required]), // הוספת חובה לפי הדרישות
+      field: new FormControl('', [Validators.required]),  
       startDate: new FormControl('', [Validators.required]),
       endDate: new FormControl(''),
       status: new FormControl('finished', [Validators.required]),
